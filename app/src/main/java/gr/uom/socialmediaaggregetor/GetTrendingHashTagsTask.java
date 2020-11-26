@@ -3,15 +3,13 @@ package gr.uom.socialmediaaggregetor;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 
 import okhttp3.Call;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -20,7 +18,7 @@ import okhttp3.ResponseBody;
 public class GetTrendingHashTagsTask extends AsyncTask<Void,Void,String> {
 
     public static final String TAG = "THisIsAtag";
-    private static final String TWITTER_ENDPOINT = "https://api.twitter.com/1.1/trends/place.json?id=1"; //"https://jsonplaceholder.typicode.com/todos/1";
+    private static final String TWITTER_ENDPOINT = "https://api.twitter.com/1.1/trends/place.json?id=23424833"; //"https://jsonplaceholder.typicode.com/todos/1";
     public static final String BEARER_TOKEN = "Bearer AAAAAAAAAAAAAAAAAAAAACy5JgEAAAAA18e%2FheRtBV9sNNifThQf5vBv11M%3De3Zib0YbJWkUkZjMqSiRR5Us1GpJEXht6PNpnxATaFQrI9oFfL";
     private StringBuilder sb;
 
@@ -38,22 +36,40 @@ public class GetTrendingHashTagsTask extends AsyncTask<Void,Void,String> {
 
         Call call = httpClient.newCall(request);
         Response response;
+        ResponseBody body;
+        String bodyJSON = null;
         try {
             response = call.execute();
-            ResponseBody body = response.body();
-            String string = body.string();
-            Log.i(TAG,string);
-            sb.append(string);
+            body = response.body();
+            bodyJSON = body.string();
+            Log.i(TAG,bodyJSON);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return sb.toString();//https://github.com/dferreira-cvl/howto-okhttp-android/blob/master/app/src/main/java/com/codavel/howto_okhttp/MainActivity.java
+        return bodyJSON;//https://github.com/dferreira-cvl/howto-okhttp-android/blob/master/app/src/main/java/com/codavel/howto_okhttp/MainActivity.java
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-        
+    protected void onPostExecute(String jsonString) {
+        super.onPostExecute(jsonString);
+        Log.i(TAG,"POSTEXECUTE\n"+jsonString);
+        String substring=null;
+        if (jsonString.startsWith("[")) {
+            substring = jsonString.substring(1, jsonString.length() - 1);
+            Log.i("Substring",substring);
+        }
+
+        List<Hashtag> hashtags = parseJsonToHashTagArray(substring);
+    }
+
+    private List<Hashtag> parseJsonToHashTagArray(String substring) {
+        Gson gson = new Gson();
+        Trends trends = gson.fromJson(substring, Trends.class);
+        Hashtag[] hashtags = trends.getHashtags();
+        for (Hashtag hashtag : hashtags) {
+            Log.i("HASHTAGHOPEFULLY",hashtag.toString());
+        }
+        return Arrays.asList(hashtags);
     }
 }
