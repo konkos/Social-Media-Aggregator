@@ -2,7 +2,9 @@ package gr.uom.socialmediaaggregetor;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Hashtag {
+import java.io.Serializable;
+
+public class Hashtag implements Serializable {
     @SerializedName("name") private String name;
     @SerializedName("url") private String url;
     @SerializedName("tweet_volume") private long tweet_volume;

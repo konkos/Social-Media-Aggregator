@@ -1,6 +1,7 @@
 package gr.uom.socialmediaaggregetor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class TrendingHashTagsArrayAdapter extends ArrayAdapter<Hashtag> {
@@ -34,7 +36,11 @@ public class TrendingHashTagsArrayAdapter extends ArrayAdapter<Hashtag> {
         trendingTweetsListView = listView;
 
         trendingTweetsListView.setOnItemClickListener((parent, view, position, id) -> {
-            // TODO: 27/11/2020 sent hashtaglist.get(position) to a new Activity 
+            Hashtag hashtag = hashtagList.get(position);
+            Intent intent = new Intent(context, postsFromAll3SocialMedia.class);
+            intent.putExtra("position",position);
+            intent.putExtra("selectedHashtag",hashtag);
+            context.startActivity(intent);
         });
     }
 
