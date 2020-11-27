@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -26,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
                         new ArrayList<Hashtag>(),
                         trendingTweetsListView
                 );
-
 
         GetTrendingHashTagsTask task = new GetTrendingHashTagsTask(trendingHashTagsArrayAdapter);
         task.execute();

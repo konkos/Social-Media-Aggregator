@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -12,7 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class TrendingHashTagsArrayAdapter extends ArrayAdapter<Hashtag> {
@@ -32,7 +32,12 @@ public class TrendingHashTagsArrayAdapter extends ArrayAdapter<Hashtag> {
         layoutResource = resource;
         inflater = LayoutInflater.from(context);
         trendingTweetsListView = listView;
+
+        trendingTweetsListView.setOnItemClickListener((parent, view, position, id) -> {
+            // TODO: 27/11/2020 sent hashtaglist.get(position) to a new Activity 
+        });
     }
+
 
 
     @NonNull
@@ -66,11 +71,11 @@ public class TrendingHashTagsArrayAdapter extends ArrayAdapter<Hashtag> {
         }
     }
 
-
     @Override
     public int getCount() {
         return hashtagList.size();
     }
+
 
     public void setHashtagList(List<Hashtag> hashtagList) {
         this.hashtagList = hashtagList;
