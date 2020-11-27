@@ -2,6 +2,7 @@ package gr.uom.socialmediaaggregetor;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ListView;
 
 import com.google.gson.Gson;
 
@@ -20,10 +21,12 @@ public class GetTrendingHashTagsTask extends AsyncTask<Void,Void,String> {
     public static final String TAG = "THisIsAtag";
     private static final String TWITTER_ENDPOINT = "https://api.twitter.com/1.1/trends/place.json?id=23424833"; //"https://jsonplaceholder.typicode.com/todos/1";
     public static final String BEARER_TOKEN = "Bearer AAAAAAAAAAAAAAAAAAAAACy5JgEAAAAA18e%2FheRtBV9sNNifThQf5vBv11M%3De3Zib0YbJWkUkZjMqSiRR5Us1GpJEXht6PNpnxATaFQrI9oFfL";
-    private StringBuilder sb;
 
-    public GetTrendingHashTagsTask(){
-        sb = new StringBuilder();
+//    private ListView trendingTweetsListView;
+    private TrendingHashTagsArrayAdapter adapter;
+
+    public GetTrendingHashTagsTask(TrendingHashTagsArrayAdapter adapter){
+        this.adapter=adapter;
     }
 
     @Override
@@ -61,6 +64,7 @@ public class GetTrendingHashTagsTask extends AsyncTask<Void,Void,String> {
         }
 
         List<Hashtag> hashtags = parseJsonToHashTagArray(substring);
+        adapter.setHashtagList(hashtags);
     }
 
     private List<Hashtag> parseJsonToHashTagArray(String substring) {
