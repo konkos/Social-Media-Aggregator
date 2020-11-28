@@ -1,9 +1,19 @@
 package gr.uom.socialmediaaggregetor;
 
 import android.os.AsyncTask;
+import android.util.Log;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class GetSelectedTweetTask extends AsyncTask<Void,Void,String> {
 
+    public static final String TAG = "GetSelectedTweetTaskLogger";
     public static String TWITTER_ENDPOINT = "https://api.twitter.com/2/tweets/search/recent?query=";
     public static final String BEARER_TOKEN = "Bearer AAAAAAAAAAAAAAAAAAAAACy5JgEAAAAA18e%2FheRtBV9sNNifThQf5vBv11M%3De3Zib0YbJWkUkZjMqSiRR5Us1GpJEXht6PNpnxATaFQrI9oFfL";
 
@@ -14,6 +24,31 @@ public class GetSelectedTweetTask extends AsyncTask<Void,Void,String> {
     @Override
     protected String doInBackground(Void... voids) {
 
-        return null;
+        OkHttpClient httpClient = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(TWITTER_ENDPOINT)
+                .addHeader("Authorization", BEARER_TOKEN)
+                .build(); // defaults to GET
+
+        Call call = httpClient.newCall(request);
+        Response response;
+        ResponseBody body;
+        String bodyJSON = null;
+        try {
+            response = call.execute();
+            body = response.body();
+            bodyJSON = body.string();
+            Log.i(TAG,bodyJSON);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return bodyJSON;
+    }
+
+    @Override
+    protected void onPostExecute(String jsonString) {
+        super.onPostExecute(jsonString);
+        Log.i(TAG,jsonString);
     }
 }

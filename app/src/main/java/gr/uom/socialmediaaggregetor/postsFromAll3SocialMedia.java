@@ -15,6 +15,7 @@ public class postsFromAll3SocialMedia extends AppCompatActivity {
         setContentView(R.layout.activity_posts_from_all3_social_media);
 
 
+
         // TODO: 27/11/2020 LOOKUP selected Hashtag on Twitter Fb and Instagram
     }
 
@@ -28,6 +29,11 @@ public class postsFromAll3SocialMedia extends AppCompatActivity {
         Hashtag selectedHashtag = (Hashtag) extras.get("selectedHashtag");
         Log.i("ALLPOSTS",selectedHashtag.toString());
 
+        String url = selectedHashtag.getUrl();
+        CharSequence charSequence = url.subSequence(28, url.length());
+        Log.i("CHASRSEQ",charSequence.toString());
+        GetSelectedTweetTask getSelectedTweetTask = new GetSelectedTweetTask(url.subSequence(28, url.length()).toString());
+        getSelectedTweetTask.execute();
 
     }
 }
