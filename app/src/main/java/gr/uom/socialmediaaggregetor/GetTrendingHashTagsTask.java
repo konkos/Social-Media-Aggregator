@@ -19,7 +19,8 @@ import okhttp3.ResponseBody;
 public class GetTrendingHashTagsTask extends AsyncTask<Void,Void,String> {
 
     public static final String TAG = "THisIsAtag";
-    private static final String TWITTER_ENDPOINT = "https://api.twitter.com/1.1/trends/place.json?id=23424833"; //"https://jsonplaceholder.typicode.com/todos/1";
+    public static final String GREECE_WOEID = "23424833";
+    private static final String TWITTER_ENDPOINT = "https://api.twitter.com/1.1/trends/place.json?id="+GREECE_WOEID;
     public static final String BEARER_TOKEN = "Bearer AAAAAAAAAAAAAAAAAAAAACy5JgEAAAAA18e%2FheRtBV9sNNifThQf5vBv11M%3De3Zib0YbJWkUkZjMqSiRR5Us1GpJEXht6PNpnxATaFQrI9oFfL";
 
 //    private ListView trendingTweetsListView;

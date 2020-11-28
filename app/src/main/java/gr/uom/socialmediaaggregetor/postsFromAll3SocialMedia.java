@@ -14,14 +14,20 @@ public class postsFromAll3SocialMedia extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posts_from_all3_social_media);
 
-        TextView textView = findViewById(R.id.intentView);
+
+        // TODO: 27/11/2020 LOOKUP selected Hashtag on Twitter Fb and Instagram
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         Integer position = (Integer) extras.get("position");
         Hashtag selectedHashtag = (Hashtag) extras.get("selectedHashtag");
         Log.i("ALLPOSTS",selectedHashtag.toString());
-        textView.setText(String.valueOf(position));
 
-        // TODO: 27/11/2020 LOOKUP selected Hashtag on Twitter Fb and Instagram 
+
     }
 }
