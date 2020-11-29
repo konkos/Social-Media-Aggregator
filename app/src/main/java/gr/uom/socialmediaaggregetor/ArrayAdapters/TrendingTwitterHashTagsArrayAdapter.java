@@ -19,7 +19,7 @@ import gr.uom.socialmediaaggregetor.Models.Hashtag;
 import gr.uom.socialmediaaggregetor.R;
 import gr.uom.socialmediaaggregetor.postsFromAll3SocialMedia;
 
-public class TrendingHashTagsArrayAdapter extends ArrayAdapter<Hashtag> {
+public class TrendingTwitterHashTagsArrayAdapter extends ArrayAdapter<Hashtag> {
 
     private static int counter = 0;
 
@@ -30,7 +30,7 @@ public class TrendingHashTagsArrayAdapter extends ArrayAdapter<Hashtag> {
     private ListView trendingTweetsListView;
 
 
-    public TrendingHashTagsArrayAdapter(@NonNull Context context, int resource, @NonNull List<Hashtag> objects, ListView listView) {
+    public TrendingTwitterHashTagsArrayAdapter(@NonNull Context context, int resource, @NonNull List<Hashtag> objects, ListView listView) {
         super(context, resource, objects);
         hashtagList = objects;
         layoutResource = resource;

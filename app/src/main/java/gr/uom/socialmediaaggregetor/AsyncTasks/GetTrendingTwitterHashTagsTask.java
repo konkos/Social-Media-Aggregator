@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import gr.uom.socialmediaaggregetor.Models.Hashtag;
+import gr.uom.socialmediaaggregetor.ArrayAdapters.TrendingTwitterHashTagsArrayAdapter;
 import gr.uom.socialmediaaggregetor.KEYS.KeysStorage;
-import gr.uom.socialmediaaggregetor.ArrayAdapters.TrendingHashTagsArrayAdapter;
+import gr.uom.socialmediaaggregetor.Models.Hashtag;
 import gr.uom.socialmediaaggregetor.Models.Trends;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -19,7 +19,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-public class GetTrendingHashTagsTask extends AsyncTask<Void,Void,String> {
+public class GetTrendingTwitterHashTagsTask extends AsyncTask<Void,Void,String> {
 
     public static final String TAG = "THisIsAtag";
     public static final String GREECE_WOEID = "23424833";
@@ -27,9 +27,9 @@ public class GetTrendingHashTagsTask extends AsyncTask<Void,Void,String> {
     public static final String BEARER_TOKEN = KeysStorage.TWITTER_BEARER_TOKEN;
 
 //    private ListView trendingTweetsListView;
-    private TrendingHashTagsArrayAdapter adapter;
+    private TrendingTwitterHashTagsArrayAdapter adapter;
 
-    public GetTrendingHashTagsTask(TrendingHashTagsArrayAdapter adapter){
+    public GetTrendingTwitterHashTagsTask(TrendingTwitterHashTagsArrayAdapter adapter){
         this.adapter=adapter;
     }
 

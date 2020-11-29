@@ -1,16 +1,16 @@
 package gr.uom.socialmediaaggregetor;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
-import gr.uom.socialmediaaggregetor.ArrayAdapters.TrendingHashTagsArrayAdapter;
-import gr.uom.socialmediaaggregetor.AsyncTasks.GetTrendingHashTagsTask;
+import gr.uom.socialmediaaggregetor.ArrayAdapters.TrendingTwitterHashTagsArrayAdapter;
+import gr.uom.socialmediaaggregetor.AsyncTasks.GetTrendingTwitterHashTagsTask;
 import gr.uom.socialmediaaggregetor.Models.Hashtag;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
         ListView trendingTweetsListView = findViewById(R.id.trendingTweetsListView);
 
-        TrendingHashTagsArrayAdapter trendingHashTagsArrayAdapter =
-                new TrendingHashTagsArrayAdapter(this,
+        TrendingTwitterHashTagsArrayAdapter trendingTwitterHashTagsArrayAdapter =
+                new TrendingTwitterHashTagsArrayAdapter(this,
                         R.layout.trending_tweet,
                         new ArrayList<Hashtag>(),
                         trendingTweetsListView
                 );
 
-        GetTrendingHashTagsTask task = new GetTrendingHashTagsTask(trendingHashTagsArrayAdapter);
+        GetTrendingTwitterHashTagsTask task = new GetTrendingTwitterHashTagsTask(trendingTwitterHashTagsArrayAdapter);
         task.execute();
     }
 

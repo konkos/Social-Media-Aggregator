@@ -1,10 +1,10 @@
 package gr.uom.socialmediaaggregetor;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import gr.uom.socialmediaaggregetor.AsyncTasks.GetListSelectedTweetTask;
 import gr.uom.socialmediaaggregetor.Models.Hashtag;
@@ -32,8 +32,14 @@ public class postsFromAll3SocialMedia extends AppCompatActivity {
         /*String url = selectedHashtag.getUrl();
         String querySubstring = url.subSequence(28, url.length()).toString();
         Log.i("CHASRSEQ",querySubstring);*/
+
+        getTweets(selectedHashtag);
+
+
+    }
+
+    private void getTweets(Hashtag selectedHashtag) {
         GetListSelectedTweetTask getListSelectedTweetTask = new GetListSelectedTweetTask(selectedHashtag.getQuery());
         getListSelectedTweetTask.execute();
-
     }
 }
