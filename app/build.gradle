@@ -26,6 +26,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'TwitterBearerToken', TWITTER_BEARER_TOKEN
+        it.buildConfigField 'String', 'TWITTER_API_KEY', TWITTER_API_KEY
+        it.buildConfigField 'String', 'TWITTER_API_SECRET_KEY', TWITTER_API_SECRET_KEY
+
+
+    }
 }
 
 dependencies {

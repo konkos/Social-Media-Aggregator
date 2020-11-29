@@ -1,4 +1,4 @@
-package gr.uom.socialmediaaggregetor;
+package gr.uom.socialmediaaggregetor.ArrayAdapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,8 +13,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.io.Serializable;
 import java.util.List;
+
+import gr.uom.socialmediaaggregetor.Models.Hashtag;
+import gr.uom.socialmediaaggregetor.R;
+import gr.uom.socialmediaaggregetor.postsFromAll3SocialMedia;
 
 public class TrendingHashTagsArrayAdapter extends ArrayAdapter<Hashtag> {
 

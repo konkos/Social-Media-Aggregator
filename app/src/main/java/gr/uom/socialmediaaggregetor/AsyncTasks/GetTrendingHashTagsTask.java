@@ -1,8 +1,7 @@
-package gr.uom.socialmediaaggregetor;
+package gr.uom.socialmediaaggregetor.AsyncTasks;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.ListView;
 
 import com.google.gson.Gson;
 
@@ -10,6 +9,10 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import gr.uom.socialmediaaggregetor.Models.Hashtag;
+import gr.uom.socialmediaaggregetor.KEYS.KeysStorage;
+import gr.uom.socialmediaaggregetor.ArrayAdapters.TrendingHashTagsArrayAdapter;
+import gr.uom.socialmediaaggregetor.Models.Trends;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -21,7 +24,7 @@ public class GetTrendingHashTagsTask extends AsyncTask<Void,Void,String> {
     public static final String TAG = "THisIsAtag";
     public static final String GREECE_WOEID = "23424833";
     private static final String TWITTER_ENDPOINT = "https://api.twitter.com/1.1/trends/place.json?id="+GREECE_WOEID;
-    public static final String BEARER_TOKEN = "Bearer AAAAAAAAAAAAAAAAAAAAACy5JgEAAAAA18e%2FheRtBV9sNNifThQf5vBv11M%3De3Zib0YbJWkUkZjMqSiRR5Us1GpJEXht6PNpnxATaFQrI9oFfL";
+    public static final String BEARER_TOKEN = KeysStorage.TWITTER_BEARER_TOKEN;
 
 //    private ListView trendingTweetsListView;
     private TrendingHashTagsArrayAdapter adapter;

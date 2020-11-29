@@ -1,24 +1,27 @@
-package gr.uom.socialmediaaggregetor;
+package gr.uom.socialmediaaggregetor.AsyncTasks;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 
+import gr.uom.socialmediaaggregetor.KEYS.KeysStorage;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-public class GetSelectedTweetTask extends AsyncTask<Void,Void,String> {
+public class GetListSelectedTweetTask extends AsyncTask<Void,Void,String> {
 
     public static final String TAG = "GetSelectedTweetTaskLogger";
     public static String TWITTER_ENDPOINT = "https://api.twitter.com/2/tweets/search/recent?query=";
-    public static final String BEARER_TOKEN = "Bearer AAAAAAAAAAAAAAAAAAAAACy5JgEAAAAA18e%2FheRtBV9sNNifThQf5vBv11M%3De3Zib0YbJWkUkZjMqSiRR5Us1GpJEXht6PNpnxATaFQrI9oFfL";
+    public static final String BEARER_TOKEN = KeysStorage.TWITTER_BEARER_TOKEN;
 
 
-    public GetSelectedTweetTask(String queryParameter){
+    public GetListSelectedTweetTask(String queryParameter){
         TWITTER_ENDPOINT = TWITTER_ENDPOINT + queryParameter;
     }
     @Override
@@ -49,6 +52,14 @@ public class GetSelectedTweetTask extends AsyncTask<Void,Void,String> {
     @Override
     protected void onPostExecute(String jsonString) {
         super.onPostExecute(jsonString);
-        Log.i(TAG,jsonString);
+        Log.i("POSTEXECUTEGETSELECTEDTWEETTASK",jsonString);
+
+        Gson gson = new Gson();
+        //Use GetTrendingHashTagsTask::parseJsonToHashTagArray
+        String[] split = jsonString.split(",");
+        for (String s : split) {
+            Log.v("POSTEXECUTEGETSELECTEDTWEETTASKARRAY",s);
+        }
     }
+
 }
