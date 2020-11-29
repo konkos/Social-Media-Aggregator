@@ -1,4 +1,4 @@
-package gr.uom.socialmediaaggregetor;
+package gr.uom.socialmediaaggregetor.Models;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,11 +8,21 @@ public class Hashtag implements Serializable {
     @SerializedName("name") private String name;
     @SerializedName("url") private String url;
     @SerializedName("tweet_volume") private long tweet_volume;
+    @SerializedName("query") private String query;
 
-    public Hashtag(String name, String url, long tweet_volume) {
+    public Hashtag(String name, String url, long tweet_volume,String query) {
         this.name = name;
         this.url = url;
         this.tweet_volume = tweet_volume;
+        this.query = query;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
     }
 
     public String getName() {
