@@ -2,16 +2,14 @@ package gr.uom.socialmediaaggregetor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
+
+import gr.uom.socialmediaaggregetor.ArrayAdapters.TrendingHashTagsArrayAdapter;
+import gr.uom.socialmediaaggregetor.AsyncTasks.GetTrendingHashTagsTask;
+import gr.uom.socialmediaaggregetor.Models.Hashtag;
 
 public class MainActivity extends AppCompatActivity {
 
