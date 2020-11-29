@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Social Media Aggregetor</string>
+    <string name="sendToGetTrendingHashtags" translatable="true">Trending # now on Twitter</string>
 </resources>
