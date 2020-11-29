@@ -3,7 +3,9 @@ package gr.uom.socialmediaaggregetor;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         ListView trendingTweetsListView = findViewById(R.id.trendingTweetsListView);
 
         TrendingHashTagsArrayAdapter trendingHashTagsArrayAdapter =
@@ -29,5 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
         GetTrendingHashTagsTask task = new GetTrendingHashTagsTask(trendingHashTagsArrayAdapter);
         task.execute();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast toast = Toast.makeText(this, "Select A Tweet For Lookup", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP, 0, 0);
+        toast.show();
     }
 }
