@@ -1,4 +1,4 @@
-package gr.uom.socialmediaaggregetor;
+package gr.uom.socialmediaaggregetor.Models;
 
 import com.google.gson.annotations.SerializedName;
 
