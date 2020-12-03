@@ -12,14 +12,14 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-public class GetUserSelectedTweets extends AsyncTask<Void,Void,String> {
+public class GetUserSelectedTweetsTask extends AsyncTask<Void,Void,String> {
 
     public static final String TAG = "GetUserSelectedTweetsTaskLogger";
     public static String TWITTER_ENDPOINT = "https://api.twitter.com/2/tweets/search/recent?query=";
     public static final String BEARER_TOKEN = KeysStorage.TWITTER_BEARER_TOKEN;
     private String query;
 
-    public GetUserSelectedTweets(String query){
+    public GetUserSelectedTweetsTask(String query){
         this.query = query;
     }
     @Override
