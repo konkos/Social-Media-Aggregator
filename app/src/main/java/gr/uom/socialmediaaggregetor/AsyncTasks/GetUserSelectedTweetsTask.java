@@ -3,9 +3,16 @@ package gr.uom.socialmediaaggregetor.AsyncTasks;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import java.io.IOException;
+import com.google.gson.Gson;
 
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+import gr.uom.socialmediaaggregetor.ArrayAdapters.UserSelectedTweetsArrayAdapter;
 import gr.uom.socialmediaaggregetor.KEYS.KeysStorage;
+import gr.uom.socialmediaaggregetor.Models.Data;
+import gr.uom.socialmediaaggregetor.Models.SelectedTrendingTweet;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -18,9 +25,11 @@ public class GetUserSelectedTweetsTask extends AsyncTask<Void,Void,String> {
     public static String TWITTER_ENDPOINT = "https://api.twitter.com/2/tweets/search/recent?query=";
     public static final String BEARER_TOKEN = KeysStorage.TWITTER_BEARER_TOKEN;
     private String query;
+    private UserSelectedTweetsArrayAdapter adapter;
 
-    public GetUserSelectedTweetsTask(String query){
+    public GetUserSelectedTweetsTask(UserSelectedTweetsArrayAdapter adapter, String query){
         this.query = query;
+        this.adapter = adapter;
     }
     @Override
     protected String doInBackground(Void... voids) {
@@ -47,8 +56,18 @@ public class GetUserSelectedTweetsTask extends AsyncTask<Void,Void,String> {
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-        Log.i("GetUserSelectedTweets",s);
+    protected void onPostExecute(String jsonData) {
+        super.onPostExecute(jsonData);
+        Log.i("GetUserSelectedTweetsJsonData",jsonData);
+        Gson gson = new Gson();
+        Data data = gson.fromJson(jsonData, Data.class);
+        //Using SelectedTrendingTweet.class Because GSON is an utter penis
+        SelectedTrendingTweet[] userSelectedTweets = data.getSelectedTrendingTweets();
+        for(SelectedTrendingTweet trendingTweet:userSelectedTweets){
+            Log.i("GetUserSelectedTweetsARRAY",trendingTweet.toString());
+        }
+        List<SelectedTrendingTweet> selectedTrendingTweets = Arrays.asList(userSelectedTweets);
+        adapter.setUserSelectedTweetsList(selectedTrendingTweets);
+
     }
 }

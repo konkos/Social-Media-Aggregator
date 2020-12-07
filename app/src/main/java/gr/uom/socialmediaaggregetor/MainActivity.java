@@ -20,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         ListView trendingTweetsListView = findViewById(R.id.trendingTweetsListView);
 
         TrendingTwitterHashTagsArrayAdapter trendingTwitterHashTagsArrayAdapter =

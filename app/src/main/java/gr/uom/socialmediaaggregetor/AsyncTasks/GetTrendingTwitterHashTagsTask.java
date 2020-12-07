@@ -62,13 +62,18 @@ public class GetTrendingTwitterHashTagsTask extends AsyncTask<Void,Void,String> 
         super.onPostExecute(jsonString);
         Log.i(TAG,"POSTEXECUTE\n"+jsonString);
         String substring=null;
+        substring = getSubString(jsonString, substring);
+
+        List<Hashtag> hashtags = parseJsonToHashTagArray(substring);
+        adapter.setHashtagList(hashtags);
+    }
+
+    private String getSubString(String jsonString, String substring) {
         if (jsonString.startsWith("[")) {
             substring = jsonString.substring(1, jsonString.length() - 1);
             Log.i("Substring",substring);
         }
-
-        List<Hashtag> hashtags = parseJsonToHashTagArray(substring);
-        adapter.setHashtagList(hashtags);
+        return substring;
     }
 
     private List<Hashtag> parseJsonToHashTagArray(String substring) {

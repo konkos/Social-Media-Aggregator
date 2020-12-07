@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 
 import gr.uom.socialmediaaggregetor.KEYS.KeysStorage;
+import gr.uom.socialmediaaggregetor.Models.Data;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -52,14 +53,16 @@ public class GetListSelectedTweetTask extends AsyncTask<Void,Void,String> {
     @Override
     protected void onPostExecute(String jsonString) {
         super.onPostExecute(jsonString);
-        Log.i("POSTEXECUTEGETSELECTEDTWEETTASK",jsonString);
-
-        Gson gson = new Gson();
+        Log.i("POST_EXECUTE_GET_SELECTED_TWEET_TASK",jsonString);
         //Use GetTrendingHashTagsTask::parseJsonToHashTagArray
-        String[] split = jsonString.split(",");
+        /*String[] split = jsonString.split(",");
         for (String s : split) {
             Log.v("POSTEXECUTEGETSELECTEDTWEETTASKARRAY",s);
-        }
+        }*/
+
+        Gson gson = new Gson();
+        Data data = gson.fromJson(jsonString, Data.class);
+        Log.i("POST_EXECUTE_GET_SELECTED_TWEET_TASK_ARRAY_GSON",data.toString());
     }
 
 }

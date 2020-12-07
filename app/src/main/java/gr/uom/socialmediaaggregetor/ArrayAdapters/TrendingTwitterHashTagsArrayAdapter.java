@@ -19,6 +19,7 @@ import gr.uom.socialmediaaggregetor.Models.Hashtag;
 import gr.uom.socialmediaaggregetor.R;
 import gr.uom.socialmediaaggregetor.postsFromAll3SocialMedia;
 
+
 public class TrendingTwitterHashTagsArrayAdapter extends ArrayAdapter<Hashtag> {
 
     private static int counter = 0;
@@ -45,8 +46,6 @@ public class TrendingTwitterHashTagsArrayAdapter extends ArrayAdapter<Hashtag> {
             context.startActivity(intent);
         });
     }
-
-
 
     @NonNull
     @Override

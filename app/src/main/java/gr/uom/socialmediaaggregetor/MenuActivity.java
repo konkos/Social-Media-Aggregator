@@ -1,11 +1,11 @@
 package gr.uom.socialmediaaggregetor;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -19,5 +19,14 @@ public class MenuActivity extends AppCompatActivity {
             Intent intent = new Intent(MenuActivity.this,MainActivity.class);
             startActivity(intent);
         });
+
+        Button intentToUserSelectedTwitterPostsActivityButton = (Button) findViewById(R.id.intentToUserSelectedTwitterPostsActivityButton);
+        intentToUserSelectedTwitterPostsActivityButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MenuActivity.this,UserSelectedTwitterPostsActivity.class);
+            startActivity(intent);
+        });
+
     }
+
+
 }
