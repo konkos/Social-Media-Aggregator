@@ -26,6 +26,11 @@ public class MenuActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        Button intentToCreatePostActivityButton = findViewById(R.id.createPostButton);
+        intentToCreatePostActivityButton.setOnClickListener(v->{
+            Intent intent = new Intent(MenuActivity.this,CreatePostActivity.class);
+            startActivity(intent);
+        });
     }
 
 
