@@ -32,7 +32,7 @@ public class UserSelectedTwitterPostsActivity extends AppCompatActivity {
                         new ArrayList<SelectedTrendingTweet>(),
                         userSearchTweetListView
                         );
-        userSearchTweetListView.setAdapter(adapter);
+        //userSearchTweetListView.setAdapter(adapter);
 
         searchButton.setOnClickListener(v -> {
             String query = userSearchEditText.getText().toString();

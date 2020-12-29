@@ -67,6 +67,7 @@ public class GetUserSelectedTweetsTask extends AsyncTask<Void,Void,String> {
             Log.i("GetUserSelectedTweetsARRAY",trendingTweet.toString());
         }
         List<SelectedTrendingTweet> selectedTrendingTweets = Arrays.asList(userSelectedTweets);
+        Log.i("selectedTrendingTweets",selectedTrendingTweets.toString());
         adapter.setUserSelectedTweetsList(selectedTrendingTweets);
 
     }

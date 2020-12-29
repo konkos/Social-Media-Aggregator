@@ -53,7 +53,6 @@ public class UserSelectedTweetsArrayAdapter extends ArrayAdapter<SelectedTrendin
         SelectedTrendingTweet currentUserSelectedTweet = userSelectedTweetList.get(position);
 
         viewHolder.userSelectedTextView.setText(currentUserSelectedTweet.getText()+"");
-
         return convertView;
     }
 
@@ -61,7 +60,7 @@ public class UserSelectedTweetsArrayAdapter extends ArrayAdapter<SelectedTrendin
         final TextView userSelectedTextView;
 
         ViewHolder(View view){
-            userSelectedTextView = view.findViewById(R.id.userSelectedTextView);
+            userSelectedTextView = view.findViewById(R.id.editTextTextMultiLine);
         }
     }
     @Override
@@ -70,6 +69,7 @@ public class UserSelectedTweetsArrayAdapter extends ArrayAdapter<SelectedTrendin
     }
     public void setUserSelectedTweetsList(List<SelectedTrendingTweet> userSelectedTweetList) {
         this.userSelectedTweetList = userSelectedTweetList;
+        Log.i("setUserSelectedTweetsList",userSelectedTweetList.toString());
         userSelectedTweetsListView.setAdapter(this);
     }
 
