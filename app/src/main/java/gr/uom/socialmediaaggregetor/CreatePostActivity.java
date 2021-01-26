@@ -2,13 +2,19 @@ package gr.uom.socialmediaaggregetor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.accounts.AccountManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
-public class CreatePostActivity extends AppCompatActivity {
+import gr.uom.socialmediaaggregetor.AsyncTasks.PostToTwitterTask;
 
+public class CreatePostActivity extends AppCompatActivity {
+    private static final String TAG = "CreatePostActivityTAG";
+    Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,15 +23,25 @@ public class CreatePostActivity extends AppCompatActivity {
         RadioButton FBradioButton = findViewById(R.id.FBRadioButton);
         RadioButton InstagramRadioButton = findViewById(R.id.InstagramRadioButton);
         RadioButton TwitterRadioButton = findViewById(R.id.TwitterRadioButton);
+        btn = findViewById(R.id.postButton);
 
-        if(TwitterRadioButton.isChecked()){
-            //post to Twitter
-        }
-        if (InstagramRadioButton.isEnabled()){
-            //post to Instagram
-        }
-        if (FBradioButton.isEnabled()){
-            //post to FaceBook
-        }
+        btn.setOnClickListener(v->{
+            String textToBePosted = editText.getText().toString();
+            if(TwitterRadioButton.isChecked()){
+                Log.i(TAG, "TwitterRadioButton.isChecked ");
+                //post to Twitter
+                PostToTwitterTask postToTwitterTask = new PostToTwitterTask(textToBePosted,CreatePostActivity.this);
+                postToTwitterTask.execute();
+            }
+            if (InstagramRadioButton.isChecked()){
+                //post to Instagram
+            }
+            if (FBradioButton.isChecked()
+            ){
+                //post to FaceBook
+            }
+        });
+
+
     }
 }

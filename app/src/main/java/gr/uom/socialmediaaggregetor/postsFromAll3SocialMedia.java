@@ -7,8 +7,6 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.facebook.FacebookActivity;
-
 import gr.uom.socialmediaaggregetor.AsyncTasks.GetListSelectedTweetTask;
 import gr.uom.socialmediaaggregetor.Models.Hashtag;
 

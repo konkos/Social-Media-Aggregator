@@ -28,9 +28,15 @@ public class MenuActivity extends AppCompatActivity {
 
         Button intentToCreatePostActivityButton = findViewById(R.id.createPostButton);
         intentToCreatePostActivityButton.setOnClickListener(v->{
-            Intent intent = new Intent(MenuActivity.this,CreatePostActivity.class);
+            Intent intent = new Intent(MenuActivity.this, CreatePostActivity.class);
             startActivity(intent);
         });
+
+       /* Button btn3 = findViewById(R.id.button3);
+        btn3.setOnClickListener(v->{
+            Intent intent = new Intent(MenuActivity.this,LoginActivity.class);
+            startActivity(intent);
+        });*/
     }
 
 
